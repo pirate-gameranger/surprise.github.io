@@ -64,6 +64,8 @@
 </style>
 
 <body>
+
+<audio id="player" autoplay loop><source src="1.mp3" type="audio/mp3"></audio>
 	<div class="sur">
 		<img src="sur.jpg">
 	</div>
@@ -90,11 +92,12 @@
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script type="text/javascript">
 
+	//SLIDER
 	var swiper = new Swiper('.swiper-container', {
       spaceBetween: 30,
       centeredSlides: true,
       autoplay: {
-        delay: 5000,
+        delay: 4000,
         disableOnInteraction: false,
       },
       pagination: {
@@ -106,12 +109,18 @@
         prevEl: '.swiper-button-prev',
       },
     });
-
-let cycle = setInterval(function(){
-  $('.sur').animate({
-   	top: '-100vh'
-	},1000);
- }, 1600);
+	//SUR IMG
+	let cycle = setInterval(function(){
+	  $('.sur').animate({
+	   	top: '-100vh'
+		},1000);
+	 }, 1600);
+	//AUDIO
+	document.addEventListener('click', musicPlay);
+	function musicPlay() {
+	    document.getElementById('player').play();
+	    document.removeEventListener('click', musicPlay);
+	}
 
 
 
